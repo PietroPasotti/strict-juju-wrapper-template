@@ -43,3 +43,11 @@ So there is some manual connecting to be done to get the snap running. After you
    sudo snap connect jujuwrapper:juju-client-observe snapd
 
 When you release, you should probably request for them to be auto-connect-enabled.
+
+# Demo run
+
+To run this project as a demo:
+
+   snapcraft
+   sudo snap install --dangerous ./jujuwrapper_0.1_amd64.snap
+   

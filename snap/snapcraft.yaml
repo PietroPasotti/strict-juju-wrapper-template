@@ -34,6 +34,7 @@ parts:
     source-branch: main
     python-packages:
       # Template: add here your dependencies.
+      - juju==2.9.7
       - typer==0.4.1
     stage-snaps:
       - juju/3.0/beta
