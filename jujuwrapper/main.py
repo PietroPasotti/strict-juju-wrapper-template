@@ -12,6 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import os
 
 import juju.model
 import juju.application
@@ -36,6 +37,14 @@ def juju_get_units_containing(
 
 
 async def _juju_get_units_containing(name: str):
+    # if we're snapped, HOME is not going to be where we think it is.
+    # hacky solution: pass JUJU_DATA as envvar. One would probably have to
+    # pass a jujudata.FileJujuData instance.
+    user = os.environ['USER']
+    jdata = f"/home/{user}/.local/share/juju"
+    os.environ['JUJU_DATA'] = jdata
+    print(f'using JUJU_DATA: {jdata}')
+
     model = juju.model.Model()
     await model.connect()
     units = []
