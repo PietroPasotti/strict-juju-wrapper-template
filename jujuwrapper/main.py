@@ -28,7 +28,7 @@ def juju_status():
 
 
 async def juju_get_units_containing(
-        name: typer.Option('', help='string to use for filtering')):
+        name: str = typer.Option('', help='string to use for filtering')):
     """Demo: python-libjuju wrapper function"""
     model = juju.model.Model()
     await model.connect()
