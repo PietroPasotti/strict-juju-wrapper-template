@@ -26,8 +26,8 @@ setup(
     version="0.1",
     packages=find_packages(),
     long_description=read('README.md'),
-    requires=["juju",
-              "typer"],
+    requires=["juju==3.0.1",
+              "typer==0.4.1"],
     entry_points={
         'console_scripts': [
             'jujuwrapper = jujuwrapper.main:main'
