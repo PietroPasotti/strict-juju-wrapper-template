@@ -54,7 +54,7 @@ async def _juju_get_units_containing(name: str):
         unit: juju.unit.Unit
         for unit in app.units:
             if name in unit.name:
-                units.append(name)
+                units.append(unit.name)
 
     if not units:
         print(f'no units found containing {name}')
