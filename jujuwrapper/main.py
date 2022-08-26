@@ -16,7 +16,7 @@
 import juju.model
 import juju.application
 import juju.unit
-
+from asyncio import run as aiorun
 import typer
 from subprocess import Popen, PIPE
 
@@ -27,10 +27,15 @@ def juju_status():
     print(proc.stdout.read().decode('utf-8'))
 
 
-async def juju_get_units_containing(
+def juju_get_units_containing(
         name: str = typer.Option('', help='string to use for filtering')
 ):
     """Demo: python-libjuju wrapper function"""
+
+    aiorun(_juju_get_units_containing(name=name))
+
+
+async def _juju_get_units_containing(name: str):
     model = juju.model.Model()
     await model.connect()
     units = []

@@ -50,4 +50,11 @@ To run this project as a demo:
 
    snapcraft
    sudo snap install --dangerous ./jujuwrapper_0.1_amd64.snap
+
+   snap connect jujuwrapper:juju-client-observe snapd:juju-client-observe
+   snap connect jujuwrapper:dot-local-share-juju snapd
    
+now you can:
+    
+    jujuwrapper status  # get juju status
+    jujuwrapper filter traefik  # list traefik-k8s/* units
